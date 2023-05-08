@@ -35,4 +35,4 @@ class GradeModelTests(TestCase):
     def test_absolute_url(self):
         grade = Grade.objects.first()
         url = reverse('grades:grade_detail', args=[str(grade.id)])
-        self.assertEquals(url, f'/grades/{grade.id}/') 
+        self.assertEquals(url, f'/grades/{grade.id}/')

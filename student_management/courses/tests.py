@@ -26,3 +26,15 @@ class CourseModelTests(TestCase):
         course = Course.objects.get(id=1)
         # This will also fail if the urlconf is not defined.
         self.assertEqual(course.get_absolute_url(), '/courses/1/')
+
+    def test_course_creation(self):
+        course = Course.objects.create(
+            title='Physics', 
+            description='Mechanics and Thermodynamics', 
+            instructor='Jane Doe', 
+            price='150.00'
+        )
+        self.assertEqual(course.title, 'Physics')
+        self.assertEqual(course.description, 'Mechanics and Thermodynamics')
+        self.assertEqual(course.instructor, 'Jane Doe')
+        self.assertEqual(course.price, '150.00')
