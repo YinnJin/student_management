@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Student Management{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'courses:course_list' %}">Courses</a></li>
+        <li><a href="{% url 'grades:grade_list' %}">Grades</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <main>{% block content %}{% endblock %}</main>
+
+      <aside>
+        <h2>About</h2>
+        <p>
+          This is a simple student management system. Click on the "Courses"
+          link to view a list of courses and their details. Click on the
+          "Grades" link to view a list of grades for each course. The "Home"
+          link takes you back to this page.
+        </p>
+      </aside>
+    </div>
+  </body>
+</html>

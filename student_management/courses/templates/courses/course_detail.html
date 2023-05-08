@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ course.title }}</h1>
+  <p>{{ course.description }}</p>
+  <p>Start date: {{ course.start_date }}</p>
+  <p>End date: {{ course.end_date }}</p>
+  <a href="{% url 'courses:course_edit' pk=course.pk %}">Edit this course</a>
+  <form action="{% url 'courses:course_delete' pk=course.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete this course">
+  </form>
+{% endblock %}

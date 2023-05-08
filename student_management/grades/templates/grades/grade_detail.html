@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object.course.title }} - {{ object.student_name }}</h1>
+<p><strong>Grade:</strong> {{ object.get_grade_display }}</p>
+<a href="{% url 'grades:grade_list' %}" class="btn btn-primary">Back to Grades</a>
+{% endblock %}
