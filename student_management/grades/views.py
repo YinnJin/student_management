@@ -26,4 +26,5 @@ class GradeUpdateView(UpdateView):
 
 class GradeDeleteView(DeleteView):
     model = Grade
+    template_name = 'grades/grade_confirm_delete.html'
     success_url = reverse_lazy('grades:grade_list')

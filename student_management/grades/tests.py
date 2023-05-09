@@ -36,3 +36,17 @@ class GradeModelTests(TestCase):
         grade = Grade.objects.first()
         url = reverse('grades:grade_detail', args=[str(grade.id)])
         self.assertEquals(url, f'/grades/{grade.id}/')
+
+    def test_grade_edit(self):
+        grade = Grade.objects.first()
+        grade.grade = 3
+        grade.save()
+        updated_grade = Grade.objects.get(id=grade.id)
+        self.assertEquals(updated_grade.grade, 3)
+
+    def test_grade_delete(self):
+        grade = Grade.objects.first()
+        grade_id = grade.id
+        grade.delete()
+        with self.assertRaises(Grade.DoesNotExist):
+            Grade.objects.get(id=grade_id)

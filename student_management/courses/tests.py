@@ -38,3 +38,17 @@ class CourseModelTests(TestCase):
         self.assertEqual(course.description, 'Mechanics and Thermodynamics')
         self.assertEqual(course.instructor, 'Jane Doe')
         self.assertEqual(course.price, '150.00')
+
+    def test_course_edit(self):
+        course = Course.objects.get(id=1)
+        course.instructor = 'Jane Doe'
+        course.save()
+        updated_course = Course.objects.get(id=1)
+        self.assertEqual(updated_course.instructor, 'Jane Doe')
+
+    def test_course_delete(self):
+        course = Course.objects.get(id=1)
+        course_id = course.id
+        course.delete()
+        with self.assertRaises(Course.DoesNotExist):
+            Course.objects.get(id=course_id)
